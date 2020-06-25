@@ -9,3 +9,13 @@ export function setLastDeployment() {
   indexFile = indexFile.replace("{{ latest_deployment }}", deploymentDate);
   fs.writeFileSync(indexFilePath, indexFile, { encoding: "utf-8" });
 }
+
+export function getLatestDeploymentString() {
+  return fetch(`${window.location.origin}/index.html`)
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      return doc.querySelector("body").getAttribute("latest-deployment");
+    });
+}

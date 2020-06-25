@@ -9,12 +9,25 @@
 </template>
 
 <script>
+import { getLatestDeploymentString } from "../scripts/deployment";
+
 export default {
   name: "App",
 
   data: () => ({
     latestDeployment: null
   }),
+
+  watch: {
+    $route: {
+      async handler() {
+        const str = await getLatestDeploymentString();
+        if (str !== this.latestDeployment) console.log("SHOULD REFRESH");
+        else console.log("NO REFRESH");
+      },
+      deep: true
+    }
+  },
 
   mounted() {
     this.latestDeployment = document
