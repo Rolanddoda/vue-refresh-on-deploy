@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-      A RANDOM CHANGE
+      <hr />
+      Change to trigger refresh
     </div>
     <router-view />
   </div>
