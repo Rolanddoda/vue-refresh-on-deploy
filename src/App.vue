@@ -12,6 +12,16 @@ export default {
   name: "App",
   components: {
     HelloWorld
+  },
+
+  data: () => ({
+    latestDeployment: null
+  }),
+
+  mounted() {
+    this.latestDeployment = document
+      .querySelector("body")
+      .getAttribute("latest-deployment");
   }
 };
 </script>
