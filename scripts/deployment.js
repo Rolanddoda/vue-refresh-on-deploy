@@ -11,7 +11,7 @@ function setLastDeployment() {
 }
 
 function getLatestDeploymentString() {
-  return fetch(`${window.location.origin}/index.html`)
+  return fetch(`${window.location.origin}/vue-refresh-on-deploy/index.html`)
     .then(res => res.text())
     .then(html => {
       const parser = new DOMParser();
